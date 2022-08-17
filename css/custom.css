@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+body{
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Work Sans', sans-serif;
+    background: #010819;
+}
+.general{
+    display: none;
+}
+/* header styling */
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 15px 30px; */
+    box-sizing: border-box;
+    background:#010819;
+}
+#header .brand{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.brand img{
+    cursor: pointer;
+}
+.brand h1{
+    color: #e5532e;
+    text-transform: uppercase;
+    /* background: linear-gradient(#e5532e, #d59a72);
+    background: -webkit-linear-gradient(#e5532e, #d59a72);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+.brand p{
+    color: #9aabbb;
+}
+#header .brand .logo h1{
+    color: #e5532e;
+}
+#header .location{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.location h5,.location i{
+    color: #e5532e;
+}
+.location p{
+    color: #9aabbb;
+    font-size: 14px;
+    line-height:normal;
+}
+/* finance logger/ invoice styling */
+#logger{
+    color: #010819;
+    position: relative;
+}
+#logger::before{
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: #e5532e;
+    top: -1rem;
+    left: 49.6%;
+    z-index: 2;
+}
+#logger::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100px;
+    background-color: #010819;
+    top: -7rem;
+    left: 50%;
+}
+/* hr{
+    color: #010819;
+    border: 2px solid #010819;
+} */
+
+/* Client info, invoice number, date of Issue, invoice total styling */
+#clientInvoice{
+    /* background-color: #9aabbb; */
+    background: #9aabbb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    position: relative;
+}
+#clientInvoice::after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #010819;
+    position: absolute;
+    bottom: -0.5rem;
+
+}
+#clientInvoice h5{
+    color: #e5532e;
+}
+#clientInvoice p{
+    color: #010819;
+}
+/* invoice table styling */
+table{
+    border: 1px solid #010819 !important;
+    text-align: center;
+}
+table thead{
+    background-color: #010819;
+    color: #9aabbb;
+}
+table tbody{
+    color: #010819;
+}
+/* styling the delete button  */
+#deleteBtn{
+    text-transform: uppercase;
+    padding: 8px 15px;
+    border: none;
+    outline: none;
+    background-color: #010819;
+    color:  #9aabbb;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+#deleteBtn:hover{
+    color: #010819;
+}
+#deleteBtn::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #e5532e;
+    transition: all 1s;
+    z-index: -1;
+    transform: translateX(-100%);
+}
+#deleteBtn:hover::before{
+    transform: translateX(0);
+}
+
+/* autocrement the serial number of cell[0] of every table row */
+#invoiceTable{
+    counter-reset: serial-number;
+}
+#invoiceTable tr td:first-child:before{
+    counter-increment: serial-number;
+    content: counter(serial-number);
+}
+
+/* subtotal, tax and total styling */
+#clientInvoiceCal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#clientInvoiceCal h6{
+    color: #010819;
+}
+/* signature */
+#signature{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6rem 0 0;
+}
+#signature div{
+    width: 30%;
+    position: relative;
+}
+#signature div::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: -0.5rem;
+    left: 0;
+    background-color: #010819;
+}
+#signature h6{
+    color: #e5532e;
+}
+
+/* form styling */
+#form{
+    background-color: #010819;
+    box-shadow: 0px 2px 12px rgba(0,0,0,0.2);
+}
+#form #direction{
+    color: #e5532e;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 500;
+} 
+.product, 
+.quantity, 
+.price{
+    position: relative !important;
+    width: 100%;
+} 
+.product input, 
+.quantity input, 
+.price input{
+    position: relative;
+    width: 100%;
+    height: 35px;
+    outline: 1px solid #9aabbb;
+    border: none;
+    background-color: #010819;
+    color: #9aabbb;
+    padding: 0 10px;
+}
+.product label, 
+.quantity label, 
+.price label{
+    position: absolute;
+    top: 4px;
+    left: 15px;
+    text-transform: uppercase;
+    color: #9aabbb;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: #010819;
+    cursor: text;
+    transition: all 200ms ease-in;
+} 
+.product input:focus, 
+.quantity input:focus, 
+.price input:focus{
+    outline-color: #e5532e;
+}
+.product input:focus ~ label,
+#product:valid ~ label,
+.quantity input:focus ~ label,
+#quantity:valid ~ label,
+.price input:focus ~ label,
+#price:valid ~ label{
+    top: -0.6rem;
+    padding: 0 3px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #e5532e;
+}
+/* removing the inner spin inside input types of number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    appearance: none;
+}
+/* styling the button for add product */
+#btnHolder{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#modalForm #btn{
+    width: 150px;
+    margin: 0 auto;
+}
+#btn{
+    width: 200px;
+    margin: 0 10px;
+}
+#btn button{
+    width: 100%;
+    text-transform: uppercase;
+    padding: 10px 0;
+    border: none;
+    background-color: #9aabbb;
+    color: #010819;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+#btn button:hover{
+    color: #010819;
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
+}
+#btn button::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #e5532e;
+    transition: all 1s;
+    z-index: -1;
+    transform: translateX(-100%);
+}
+#btn button:hover::before{
+    transform: translateX(0);
+}
+
+/* Footer styling */
+footer .row #footer{
+    background-color: #9aabbb;
+    width: 100%;
+}
+footer p{
+    color: #010819;
+}
+footer p span{
+    color: #e5532e;
+    font-weight: bold;
+}
+/* Modal styling */
+#content{
+    background: #010819;
+}
+#content h5{
+    color: #e5532e;
+}
+.btn-close{
+    box-shadow: none !important;
+}
+.modal-body .container > p{
+    font-size: 0.9rem;
+    color: #e5532e;
+    font-weight: 100;
+}
+#modalForm p{
+    color: #e5532e;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+.vendorBrandName, 
+.vendorBizType, 
+.vendorCAC,
+.vendorAdress,
+.vendorZip,
+.vendorTel,
+.vendorEmail,
+.clientName,
+.clientAddress,
+.clientPhoneNo{
+    position: relative !important;
+    width: 100%;
+} 
+.vendorBrandName input, 
+.vendorBizType input, 
+.vendorCAC input,
+.vendorAdress input,
+.vendorZip input,
+.vendorTel input,
+.vendorEmail input,
+.clientName input,
+.clientAddress input,
+.clientPhoneNo input{
+    position: relative;
+    width: 100%;
+    height: 35px;
+    outline: 1px solid #9aabbb;
+    border: none;
+    background-color: #010819;
+    color: #e5532e;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+.vendorBrandName label, 
+.vendorBizType label, 
+.vendorCAC label,
+.vendorAdress label,
+.vendorZip label,
+.vendorTel label,
+.vendorEmail label,
+.clientName label,
+.clientAddress label,
+.clientPhoneNo label{
+    position: absolute;
+    top: 4px;
+    left: 15px;
+    text-transform: uppercase;
+    color: #9aabbb;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: #010819;
+    cursor: text;
+    transition: all 200ms ease-in;
+} 
+.vendorBrandName input:focus, 
+.vendorBizType input:focus, 
+.vendorCAC input:focus,
+.vendorAdress input:focus,
+.vendorZip input:focus,
+.vendorTel input:focus,
+.vendorEmail input:focus,
+.clientName input:focus,
+.clientAddress input:focus,
+.clientPhoneNo input:focus{
+    outline-color: #e5532e;
+}
+.vendorBrandName input:focus ~ label,
+#brand:valid ~ label,
+.vendorBizType input:focus ~ label,
+#business:valid ~ label,
+.vendorCAC input:focus ~ label,
+#CACno:valid ~ label,
+.vendorAdress input:focus ~ label,
+#vAddress:valid ~ label,
+.vendorZip input:focus ~ label,
+#zipNo:valid ~ label,
+.vendorTel input:focus ~ label,
+#phoneNo:valid ~ label,
+.vendorEmail input:focus ~ label,
+#vEmail:valid ~ label,
+.clientName input:focus ~ label,
+#cName:valid ~ label,
+.clientAddress input:focus ~ label,
+#cAddress:valid ~ label,
+.clientPhoneNo input:focus ~ label,
+#cPhone:valid ~ label{
+    top: -0.6rem;
+    padding: 0 3px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #e5532e;
+}
+/* Media query for the header */
+@media only screen and (max-width: 768px){
+    #header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background:#010819;
+        box-shadow: 0px -2px 20px rgba(0,0,0,0.4);
+    }
+    #header .brand{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    #header .location{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #logger::before{
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        background-color: #e5532e;
+        top: -1rem;
+        left: 48.8%;
+    }
+    .product label, 
+    .quantity label, 
+    .price label{
+        font-size: 0.8rem;
+        top: 6px;
+    }
+    .product input:focus ~ label,
+    #product:valid ~ label,
+    .quantity input:focus ~ label,
+    #quantity:valid ~ label,
+    .price input:focus ~ label,
+    #price:valid ~ label{
+        top: -0.7rem;
+        font-size: 0.8rem;
+    }
+    #btn{
+        width: 150px;
+        margin: 0 8px;
+    }
+    #btn button{
+        font-size: 0.8rem;
+    }
+    #clientInvoice{
+        display: flex;
+        flex-direction: column;
+    }
+    #clientInvoice div{
+        padding: 0 20px;
+    }
+    #clientInvoiceCal{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #signature{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        margin: 6rem 0 0;
+    }
+    #signature div{
+        width: 70%;
+    }
+}
+
+/* media print css */
+@media print{
+    #dontPrint{
+        display: none;
+    }
+    footer{
+        display: none;
+    }
+    #hideColumn{
+        display: none;
+    }
+}
